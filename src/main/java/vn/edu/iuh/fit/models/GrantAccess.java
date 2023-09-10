@@ -3,13 +3,13 @@ package vn.edu.iuh.fit.models;
 import java.util.UUID;
 
 public class GrantAccess {
-    private UUID grantAccessId;
+    private String grantAccessId;
     private Account account;
     private Role role;
     private boolean isGrant;
     private String note;
 
-    public GrantAccess(UUID grantAccessId, Account account, Role role, boolean isGrant, String note) {
+    public GrantAccess(String grantAccessId, Account account, Role role, boolean isGrant, String note) {
         this.grantAccessId = grantAccessId;
         this.account = account;
         this.role = role;
@@ -17,11 +17,18 @@ public class GrantAccess {
         this.note = note;
     }
 
-    public UUID getGrantAccessId() {
+    public GrantAccess(Account account, Role role, boolean isGrant, String note) {
+        this.account = account;
+        this.role = role;
+        this.isGrant = isGrant;
+        this.note = note;
+    }
+
+    public String getGrantAccessId() {
         return grantAccessId;
     }
 
-    public void setGrantAccessId(UUID grantAccessId) {
+    public void setGrantAccessId(String grantAccessId) {
         this.grantAccessId = grantAccessId;
     }
 
@@ -75,7 +82,7 @@ public class GrantAccess {
     @Override
     public String toString() {
         return "GrantAccess{" +
-                "grantAccessId=" + grantAccessId +
+                "grantAccessId='" + grantAccessId + '\'' +
                 ", account=" + account +
                 ", role=" + role +
                 ", isGrant=" + isGrant +

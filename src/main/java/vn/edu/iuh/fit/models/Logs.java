@@ -1,16 +1,15 @@
 package vn.edu.iuh.fit.models;
 
 import java.sql.Timestamp;
-import java.util.UUID;
 
 public class Logs {
-    private UUID logId;
+    private String logId;
     private String accountId;
     private Timestamp timeLogin;
     private Timestamp timeSignOut;
     private String note;
 
-    public Logs(UUID logId, String accountId, Timestamp timeLogin, Timestamp timeSignOut, String note) {
+    public Logs(String logId, String accountId, Timestamp timeLogin, Timestamp timeSignOut, String note) {
         this.logId = logId;
         this.accountId = accountId;
         this.timeLogin = timeLogin;
@@ -18,11 +17,18 @@ public class Logs {
         this.note = note;
     }
 
-    public UUID getLogId() {
+    public Logs(String accountId, Timestamp timeLogin, Timestamp timeSignOut, String note) {
+        this.accountId = accountId;
+        this.timeLogin = timeLogin;
+        this.timeSignOut = timeSignOut;
+        this.note = note;
+    }
+
+    public String getLogId() {
         return logId;
     }
 
-    public void setLogId(UUID logId) {
+    public void setLogId(String logId) {
         this.logId = logId;
     }
 
@@ -76,7 +82,7 @@ public class Logs {
     @Override
     public String toString() {
         return "Logs{" +
-                "logId=" + logId +
+                "logId='" + logId + '\'' +
                 ", accountId='" + accountId + '\'' +
                 ", timeLogin=" + timeLogin +
                 ", timeSignOut=" + timeSignOut +

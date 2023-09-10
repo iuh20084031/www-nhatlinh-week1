@@ -3,23 +3,29 @@ package vn.edu.iuh.fit.models;
 import java.util.UUID;
 
 public class Role {
-    private UUID roleId;
+    private String roleId;
     private String roleName;
     private String description;
     private String status;
 
-    public Role(UUID roleId, String roleName, String description, String status) {
+    public Role(String roleId, String roleName, String description, String status) {
         this.roleId = roleId;
         this.roleName = roleName;
         this.description = description;
         this.status = status;
     }
 
-    public UUID getRoleId() {
+    public Role(String roleName, String description, String status) {
+        this.roleName = roleName;
+        this.description = description;
+        this.status = status;
+    }
+
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(UUID roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 
@@ -54,18 +60,18 @@ public class Role {
 
         Role role = (Role) o;
 
-        return getRoleId() != null ? getRoleId().equals(role.getRoleId()) : role.getRoleId() == null;
+        return getRoleId().equals(role.getRoleId());
     }
 
     @Override
     public int hashCode() {
-        return getRoleId() != null ? getRoleId().hashCode() : 0;
+        return getRoleId().hashCode();
     }
 
     @Override
     public String toString() {
         return "Role{" +
-                "roleId=" + roleId +
+                "roleId='" + roleId + '\'' +
                 ", roleName='" + roleName + '\'' +
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +

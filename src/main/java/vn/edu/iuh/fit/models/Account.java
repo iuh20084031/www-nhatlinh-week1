@@ -3,14 +3,14 @@ package vn.edu.iuh.fit.models;
 import java.util.UUID;
 
 public class Account {
-    private UUID accountId;
+    private String accountId;
     private String fullName;
     private String password;
     private String email;
     private String phone;
     private String status;
 
-    public Account(UUID accountId, String fullName, String password, String email, String phone, String status) {
+    public Account(String accountId, String fullName, String password, String email, String phone, String status) {
         this.accountId = accountId;
         this.fullName = fullName;
         this.password = password;
@@ -19,11 +19,19 @@ public class Account {
         this.status = status;
     }
 
-    public UUID getAccountId() {
+    public Account(String fullName, String password, String email, String phone, String status) {
+        this.fullName = fullName;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.status = status;
+    }
+
+    public String getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(UUID accountId) {
+    public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
@@ -85,7 +93,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "accountId=" + accountId +
+                "accountId='" + accountId + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
