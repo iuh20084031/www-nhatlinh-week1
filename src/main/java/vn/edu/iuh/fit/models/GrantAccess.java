@@ -1,92 +1,67 @@
 package vn.edu.iuh.fit.models;
 
-import java.util.UUID;
+import jakarta.persistence.*;
+import vn.edu.iuh.fit.enums.GrantValue;
+import vn.edu.iuh.fit.enums.Status;
 
+@Entity
+@Table(name = "grant_access")
 public class GrantAccess {
-    private String grantAccessId;
+    @Id
+    @Column(name = "account_id")
+    private long account_id;
+
+    @Column(name = "role")
+    private long role_id;
+
+    @Column(name = "grant_value")
+    private GrantValue grant_value;
+
+    @ManyToOne
     private Account account;
-    private Role role;
-    private boolean isGrant;
-    private String note;
 
-    public GrantAccess(String grantAccessId, Account account, Role role, boolean isGrant, String note) {
-        this.grantAccessId = grantAccessId;
-        this.account = account;
-        this.role = role;
-        this.isGrant = isGrant;
-        this.note = note;
+    @ManyToOne Role role;
+
+    public GrantAccess(long account_id, long role_id, GrantValue grant_value) {
+        this.account_id = account_id;
+        this.role_id = role_id;
+        this.grant_value = grant_value;
     }
 
-    public GrantAccess(Account account, Role role, boolean isGrant, String note) {
-        this.account = account;
-        this.role = role;
-        this.isGrant = isGrant;
-        this.note = note;
+    public GrantAccess() {
+
     }
 
-    public String getGrantAccessId() {
-        return grantAccessId;
+    public long getAccount_id() {
+        return account_id;
     }
 
-    public void setGrantAccessId(String grantAccessId) {
-        this.grantAccessId = grantAccessId;
+    public void setAccount_id(long account_id) {
+        this.account_id = account_id;
     }
 
-    public Account getAccount() {
-        return account;
+    public long getRole_id() {
+        return role_id;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setRole_id(long role_id) {
+        this.role_id = role_id;
     }
 
-    public Role getRole() {
-        return role;
+    public GrantValue getGrant_value() {
+        return grant_value;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public boolean isGrant() {
-        return isGrant;
-    }
-
-    public void setGrant(boolean grant) {
-        isGrant = grant;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof GrantAccess)) return false;
-
-        GrantAccess that = (GrantAccess) o;
-
-        return getGrantAccessId().equals(that.getGrantAccessId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getGrantAccessId().hashCode();
+    public void setGrant_value(GrantValue grant_value) {
+        this.grant_value = grant_value;
     }
 
     @Override
     public String toString() {
         return "GrantAccess{" +
-                "grantAccessId='" + grantAccessId + '\'' +
-                ", account=" + account +
-                ", role=" + role +
-                ", isGrant=" + isGrant +
-                ", note='" + note + '\'' +
+                "account_id=" + account_id +
+                ", role_id=" + role_id +
+                ", grant_value=" + grant_value +
                 '}';
     }
 }

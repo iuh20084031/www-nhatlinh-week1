@@ -1,40 +1,53 @@
 package vn.edu.iuh.fit.models;
 
-import java.util.UUID;
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "role")
 public class Role {
-    private String roleId;
-    private String roleName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
+    private long role_id;
+
+    @Column(name = "role_name")
+    private String role_name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "status")
     private String status;
 
-    public Role(String roleId, String roleName, String description, String status) {
-        this.roleId = roleId;
-        this.roleName = roleName;
+    @OneToMany(mappedBy = "role")
+    private List<GrantAccess> listGrantAccess;
+
+    public Role(String role_name, String description, String status) {
+        this.role_name = role_name;
         this.description = description;
         this.status = status;
     }
 
-    public Role(String roleName, String description, String status) {
-        this.roleName = roleName;
-        this.description = description;
-        this.status = status;
+    public Role() {
+
     }
 
-    public String getRoleId() {
-        return roleId;
+    public long getRole_id() {
+        return role_id;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setRole_id(long role_id) {
+        this.role_id = role_id;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getRole_name() {
+        return role_name;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setRole_name(String role_name) {
+        this.role_name = role_name;
     }
 
     public String getDescription() {
@@ -54,25 +67,10 @@ public class Role {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Role)) return false;
-
-        Role role = (Role) o;
-
-        return getRoleId().equals(role.getRoleId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getRoleId().hashCode();
-    }
-
-    @Override
     public String toString() {
         return "Role{" +
-                "roleId='" + roleId + '\'' +
-                ", roleName='" + roleName + '\'' +
+                "role_id=" + role_id +
+                ", role_name='" + role_name + '\'' +
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
                 '}';

@@ -1,92 +1,88 @@
 package vn.edu.iuh.fit.models;
 
-import java.sql.Timestamp;
+import jakarta.persistence.*;
 
+import java.sql.Date;
+
+@Entity
+@Table(name = "logs")
 public class Logs {
-    private String logId;
-    private String accountId;
-    private Timestamp timeLogin;
-    private Timestamp timeSignOut;
-    private String note;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "log_id")
+    private long log_id;
 
-    public Logs(String logId, String accountId, Timestamp timeLogin, Timestamp timeSignOut, String note) {
-        this.logId = logId;
-        this.accountId = accountId;
-        this.timeLogin = timeLogin;
-        this.timeSignOut = timeSignOut;
-        this.note = note;
+    @Column(name = "account_id")
+    private String account_id;
+
+    @Column(name = "login_time")
+    private Date login_time;
+
+    @Column(name = "logout_time")
+    private Date logout_time;
+
+    @Column(name = "notes")
+    private String notes;
+
+    public Logs(String account_id, Date login_time, Date logout_time, String notes) {
+        this.account_id = account_id;
+        this.login_time = login_time;
+        this.logout_time = logout_time;
+        this.notes = notes;
     }
 
-    public Logs(String accountId, Timestamp timeLogin, Timestamp timeSignOut, String note) {
-        this.accountId = accountId;
-        this.timeLogin = timeLogin;
-        this.timeSignOut = timeSignOut;
-        this.note = note;
+    public Logs() {
+
     }
 
-    public String getLogId() {
-        return logId;
+    public long getLog_id() {
+        return log_id;
     }
 
-    public void setLogId(String logId) {
-        this.logId = logId;
+    public void setLog_id(long log_id) {
+        this.log_id = log_id;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getAccount_id() {
+        return account_id;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
+    public void setAccount_id(String account_id) {
+        this.account_id = account_id;
     }
 
-    public Timestamp getTimeLogin() {
-        return timeLogin;
+    public Date getLogin_time() {
+        return login_time;
     }
 
-    public void setTimeLogin(Timestamp timeLogin) {
-        this.timeLogin = timeLogin;
+    public void setLogin_time(Date login_time) {
+        this.login_time = login_time;
     }
 
-    public Timestamp getTimeSignOut() {
-        return timeSignOut;
+    public Date getLogout_time() {
+        return logout_time;
     }
 
-    public void setTimeSignOut(Timestamp timeSignOut) {
-        this.timeSignOut = timeSignOut;
+    public void setLogout_time(Date logout_time) {
+        this.logout_time = logout_time;
     }
 
-    public String getNote() {
-        return note;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Logs)) return false;
-
-        Logs logs = (Logs) o;
-
-        return getLogId().equals(logs.getLogId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getLogId().hashCode();
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override
     public String toString() {
         return "Logs{" +
-                "logId='" + logId + '\'' +
-                ", accountId='" + accountId + '\'' +
-                ", timeLogin=" + timeLogin +
-                ", timeSignOut=" + timeSignOut +
-                ", note='" + note + '\'' +
+                "log_id=" + log_id +
+                ", account_id='" + account_id + '\'' +
+                ", login_time=" + login_time +
+                ", logout_time=" + logout_time +
+                ", notes='" + notes + '\'' +
                 '}';
     }
 }
