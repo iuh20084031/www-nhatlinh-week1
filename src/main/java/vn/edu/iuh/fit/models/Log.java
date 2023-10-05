@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "logs")
-public class Logs {
+@Table(name = "Log")
+public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "log_id")
@@ -24,14 +24,14 @@ public class Logs {
     @Column(name = "notes")
     private String notes;
 
-    public Logs(String account_id, Date login_time, Date logout_time, String notes) {
+    public Log(String account_id, Date login_time, Date logout_time, String notes) {
         this.account_id = account_id;
         this.login_time = login_time;
         this.logout_time = logout_time;
         this.notes = notes;
     }
 
-    public Logs() {
+    public Log() {
 
     }
 

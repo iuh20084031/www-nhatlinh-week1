@@ -5,7 +5,7 @@ import vn.edu.iuh.fit.enums.GrantValue;
 import vn.edu.iuh.fit.enums.Status;
 
 @Entity
-@Table(name = "grant_access")
+@Table(name = "Grant_access")
 public class GrantAccess {
     @Id
     @Column(name = "account_id")

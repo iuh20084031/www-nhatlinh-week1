@@ -6,7 +6,7 @@ import vn.edu.iuh.fit.enums.Status;
 import java.util.List;
 
 @Entity
-@Table(name = "account")
+@Table(name = "Account")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
