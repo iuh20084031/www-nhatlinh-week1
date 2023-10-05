@@ -11,7 +11,8 @@ public class GrantAccess {
     @Column(name = "account_id")
     private long account_id;
 
-    @Column(name = "role")
+    @Id
+    @Column(name = "role_id")
     private long role_id;
 
     @Column(name = "is_grant")
@@ -23,7 +24,8 @@ public class GrantAccess {
     @ManyToOne
     private Account account;
 
-    @ManyToOne Role role;
+    @ManyToOne
+    private Role role;
 
     public GrantAccess(long account_id, long role_id, boolean is_grant, String note) {
         this.account_id = account_id;

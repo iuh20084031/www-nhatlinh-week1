@@ -13,7 +13,7 @@ public class Log {
     private long log_id;
 
     @Column(name = "account_id")
-    private String account_id;
+    private long account_id;
 
     @Column(name = "login_time")
     private Date login_time;
@@ -24,7 +24,7 @@ public class Log {
     @Column(name = "notes")
     private String notes;
 
-    public Log(String account_id, Date login_time, Date logout_time, String notes) {
+    public Log(long account_id, Date login_time, Date logout_time, String notes) {
         this.account_id = account_id;
         this.login_time = login_time;
         this.logout_time = logout_time;
@@ -43,11 +43,11 @@ public class Log {
         this.log_id = log_id;
     }
 
-    public String getAccount_id() {
+    public long getAccount_id() {
         return account_id;
     }
 
-    public void setAccount_id(String account_id) {
+    public void setAccount_id(long account_id) {
         this.account_id = account_id;
     }
 

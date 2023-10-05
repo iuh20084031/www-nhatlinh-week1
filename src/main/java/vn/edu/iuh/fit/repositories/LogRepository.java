@@ -17,6 +17,9 @@ public class LogRepository {
         em = Persistence.createEntityManagerFactory("week1").createEntityManager();
     }
 
+    public Log findLog(long log_id) {
+        return em.find(Log.class, log_id);
+    }
     public List<Log> findAll() {
         TypedQuery<Log> query = em.createQuery("select l from Log l", Log.class);
         return query.getResultList();
