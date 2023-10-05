@@ -14,18 +14,22 @@ public class GrantAccess {
     @Column(name = "role")
     private long role_id;
 
-    @Column(name = "grant_value")
-    private GrantValue grant_value;
+    @Column(name = "is_grant")
+    private boolean is_grant;
+
+    @Column(name = "note")
+    private String note;
 
     @ManyToOne
     private Account account;
 
     @ManyToOne Role role;
 
-    public GrantAccess(long account_id, long role_id, GrantValue grant_value) {
+    public GrantAccess(long account_id, long role_id, boolean is_grant, String note) {
         this.account_id = account_id;
         this.role_id = role_id;
-        this.grant_value = grant_value;
+        this.is_grant = is_grant;
+        this.note = note;
     }
 
     public GrantAccess() {
@@ -48,12 +52,12 @@ public class GrantAccess {
         this.role_id = role_id;
     }
 
-    public GrantValue getGrant_value() {
-        return grant_value;
+    public boolean isIs_grant() {
+        return is_grant;
     }
 
-    public void setGrant_value(GrantValue grant_value) {
-        this.grant_value = grant_value;
+    public void setIs_grant(boolean is_grant) {
+        this.is_grant = is_grant;
     }
 
     @Override
@@ -61,7 +65,7 @@ public class GrantAccess {
         return "GrantAccess{" +
                 "account_id=" + account_id +
                 ", role_id=" + role_id +
-                ", grant_value=" + grant_value +
+                ", grant_value=" + is_grant +
                 '}';
     }
 }

@@ -26,12 +26,12 @@ public class Account {
     private String phone;
 
     @Column(name = "status")
-    private Status status;
+    private int status;
 
     @OneToMany(mappedBy = "account")
     private List<GrantAccess> listGrantAccess;
 
-    public Account(String fullname, String password, String email, String phone, Status status) {
+    public Account(String fullname, String password, String email, String phone, int status) {
         this.fullname = fullname;
         this.password = password;
         this.email = email;
@@ -83,11 +83,11 @@ public class Account {
         this.phone = phone;
     }
 
-    public Status getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
